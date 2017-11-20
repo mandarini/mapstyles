@@ -1,0 +1,20 @@
+[
+  {
+    "featureType": "all",
+    "stylers": [
+      { "color": "#000000" }
+    ]
+  },{
+    "featureType": "road.arterial",
+    "elementType": "geometry",
+    "stylers": [
+      { "color": "#ffde00" }
+    ]
+  },{
+    "featureType": "landscape",
+    "elementType": "labels",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  }
+]

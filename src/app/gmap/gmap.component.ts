@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { GmapService } from '../gmap.service';
+import * as dark from '../../data/styles_dark.json';
 
 @Component({
   selector: 'app-gmap',
@@ -11,27 +12,23 @@ export class GmapComponent implements AfterViewInit {
 
   private map: any;
 
-  constructor(private gapi: GmapService) {}
+  constructor(private gapi: GmapService) {
+  }
 
   ngAfterViewInit(): void {
 
     this.gapi.init.then((maps: any) => {
       const loc = new maps.LatLng(37.971575, 23.726235);
-
+      var styledMapType = new maps.StyledMapType(dark);
       this.map = new maps.Map(this.mapElement.nativeElement, {
         zoom: 13,
-        center: loc,
-        scrollwheel: true,
-        panControl: false,
-        mapTypeControl: false,
-        zoomControl: true,
-        streetViewControl: false,
-        scaleControl: true,
-        zoomControlOptions: {
-          style: maps.ZoomControlStyle.LARGE,
-          position: maps.ControlPosition.RIGHT_BOTTOM
-        }
+        mapTypeControlOptions: {
+            mapTypeIds: ['roadmap', 'styled_map']
+          },
+        center: loc
       });
+      this.map.mapTypes.set('styled_map', styledMapType);
+      this.map.setMapTypeId('styled_map');
     });
   }
 

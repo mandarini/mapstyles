@@ -1,0 +1,10 @@
+.controls {
+position: absolute;
+z-index: 2;
+top: 50px;
+right: 10px;
+width: auto;
+height: 60%;
+overflow-y: scroll;
+background: rgba(255, 255, 255, 0.6);
+}
